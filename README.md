@@ -1,29 +1,6 @@
 # tft-overlay
 
-## Project setup
-```
-yarn install
-```
+> electron 版本 云顶之弈装备合成表
+> 样子照着抄的，暂时只有装备表，支持 9.19版本
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![预览](http://ww1.sinaimg.cn/large/005O2C54gy1g7gvili3hlj30fc0fzgqi.jpg)
