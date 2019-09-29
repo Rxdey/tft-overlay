@@ -12,10 +12,15 @@
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-flow: column;
 }
 .header{
   width: 100%;
   background: #000;
   padding: 15px;
+}
+.router-view{
+  flex: 1;
 }
 </style>
