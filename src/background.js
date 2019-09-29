@@ -25,6 +25,7 @@ function createWindow() {
     resizable: false,
     maximizable: false,
     alwaysOnTop: true, // 置顶
+    skipTaskbar: true,
     x: 0,
     y: 0,
     webPreferences: {
@@ -53,6 +54,14 @@ function createWindow() {
   ipcMain.on('out', (e) => {
     childWin.webContents.send('out');
   });
+  win.setAlwaysOnTop(true, 'status', 99999);
+  setInterval(() => {
+    win.moveTop();
+  }, 2000);
+  // win.on('always-on-top-changed', () => {
+  //   console.log('blur');
+  //   win.moveTop();
+  // });
 }
 
 // Quit when all windows are closed.
