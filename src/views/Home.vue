@@ -8,44 +8,46 @@
 
     <transition name="fade">
       <div class="equipment-list" v-show="showEquipment">
-
+        <div class="equipment-list--card" v-for="(item, index) in currentEqupment" :key="index">
+          <img :src="item.icon" :alt="item.name">
+        </div>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
-import { baseUrl, equipmentUrl, items } from '../data/equipment';
+import { items } from '../data/equipment';
 
 export default {
   name: 'Home',
-  props: {
-  },
   components: {
   },
   data () {
     return {
       base: [],
       equipment: [],
-      showEquipment: false
+      showEquipment: true,
+      currentEqupment: []
     };
   },
   created () {
   },
   mounted () {
     const { equipment, base } = items;
-    this.base = base.map(item => { item.icon = baseUrl + item.icon; return item; });
-    this.equipment = equipment.map(item => { item.icon = equipmentUrl + item.icon; return item; });
+    this.base = base;
+    this.equipment = equipment;
   },
   methods: {
     // 显示列表 获取边距
     handleMouseOver (e, item, index) {
       if (!this.showEquipment) this.showEquipment = true;
-      const left = e.target.offsetLeft - 3;
-      console.log(left);
+      const { id } = item;
+      this.currentEqupment = this.getEquipmentRelation(id, this.equipment);
+      // console.log(equipmentList);
     },
     handleMouseOut (e) {
-      this.showEquipment = false;
+      // this.showEquipment = false;
     },
     /**
      * 通过id查找
@@ -74,7 +76,19 @@ export default {
 <style lang="less">
 @import url("../assets/css/color.less");
 @import url("../assets/css/animate.less");
-@cardWidth: 55px;
+@cardWidth: 50px;
+.card(@width) {
+  width: @width;
+  height: @width;
+  border-radius: @width;
+  overflow: hidden;
+  border: 3px solid @border-color;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .home {
   position: relative;
   height: 100%;
@@ -85,27 +99,21 @@ export default {
   left: 0;
   z-index: 10;
   &--card {
-    width: @cardWidth;
-    height: @cardWidth;
-    border-radius: @cardWidth;
-    overflow: hidden;
-    border: 3px solid @border-color;
     display: inline-block;
-    margin-right: 5px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    margin-right: 2px;
+    .card(@cardWidth);
   }
 }
 .equipment-list {
   position: absolute;
-  top: 0;
+  top: @cardWidth + 5;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   transition: 0.3s all;
+  &--card {
+    .card(@cardWidth - 5);
+  }
 }
 </style>
