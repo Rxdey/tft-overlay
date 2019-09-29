@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header class="header" id="header" @mousemove="handleMouseMove" @mouseup="handleMouseUp" @mousedown="handleMouseDown" @mouseleave="handleMouseOut" @mouseover.stop="handleUnlock" @mouseout.stop="handleLock">
-      <div class="line"></div>
+    <header class="header" id="header" v-if="$route.path!='/child'">
+      <div class="line drag"></div>
     </header>
     <div class="router-view">
       <router-view />
@@ -18,11 +18,9 @@ export default {
   data () {
     return {
       currentWindow: null
-    }
+    };
   },
   mounted () {
-    this.currentWindow = require('electron').remote.getCurrentWindow();
-    this.handleLock();
   },
   methods: {
     handleMouseOut (e) {
@@ -52,25 +50,26 @@ export default {
     },
     handleLock () {
       this.currentWindow.setIgnoreMouseEvents(true, { forward: true });
-    },
+    }
   }
-}
+};
 </script>
 <style lang="less">
 #app {
   width: 100%;
+  max-width: 600px;
   height: 100%;
   position: relative;
   display: flex;
   flex-flow: column;
 }
 .header {
-  width: 40px;
+  width: 50px;
   padding: 5px;
   .line {
     background: #fdfbe3;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 12px;
   }
 }
 .router-view {

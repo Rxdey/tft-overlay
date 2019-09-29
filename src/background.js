@@ -1,7 +1,8 @@
-import { app, protocol, BrowserWindow } from 'electron';
+import { app, protocol, BrowserWindow, ipcMain } from 'electron';
 import { createProtocol, installVueDevtools } from 'vue-cli-plugin-electron-builder/lib';
 // eslint-disable-next-line import/no-named-as-default
 import trayMenu from './menu';
+import createChilldWindow from './childWindow';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -17,13 +18,15 @@ protocol.registerSchemesAsPrivileged([
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 620,
-    height: 560,
+    width: 480,
+    height: 100,
     frame: false,
     transparent: true,
     resizable: false,
     maximizable: false,
     alwaysOnTop: true, // 置顶
+    x: 0,
+    y: 0,
     webPreferences: {
       nodeIntegration: true
     }
@@ -32,7 +35,7 @@ function createWindow() {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
-    if (!process.env.IS_TEST) win.webContents.openDevTools();
+    // if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
     createProtocol('app');
     // Load the index.html when not in development
@@ -42,8 +45,14 @@ function createWindow() {
   win.on('closed', () => {
     win = null;
   });
-
+  const childWin = createChilldWindow(win);
   trayMenu(win);
+  ipcMain.on('over', (e, id) => {
+    childWin.webContents.send('over', id);
+  });
+  ipcMain.on('out', (e) => {
+    childWin.webContents.send('out');
+  });
 }
 
 // Quit when all windows are closed.
