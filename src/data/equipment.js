@@ -1,5 +1,5 @@
-export const baseUrl = '/image/base/';
-export const equipmentUrl = '/image/equipment/';
+// import path from 'path';
+
 export const items = {
   base: [
     {
