@@ -65,8 +65,7 @@ export default {
   flex-flow: column;
 }
 .header {
-  // width: 100%;
-  // background: #000;
+  width: 40px;
   padding: 5px;
   .line {
     background: #fdfbe3;
