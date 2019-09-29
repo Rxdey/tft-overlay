@@ -1,8 +1,21 @@
 <template>
   <div id="app">
-    <router-view />
+    <header class="header drag"></header>
+    <div class="router-view">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <style lang="less">
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.header{
+  width: 100%;
+  background: #000;
+  padding: 15px;
+}
 </style>
