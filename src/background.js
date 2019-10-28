@@ -54,7 +54,8 @@ function createWindow() {
   ipcMain.on('out', (e) => {
     childWin.webContents.send('out');
   });
-  win.setAlwaysOnTop(true, 'status', 99999);
+  // win.setAlwaysOnTop(true, 'status', 99999);
+  // 全屏监听不到啊，就一直置顶吧 没啥问题
   setInterval(() => {
     win.moveTop();
   }, 2000);
