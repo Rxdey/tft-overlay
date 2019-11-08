@@ -1,3 +1,5 @@
+// import path from 'path';
+
 export const items = {
   base: [
     {
@@ -15,7 +17,7 @@ export const items = {
     {
       id: 3,
       name: '反曲之弓',
-      description: '+15%攻速',
+      description: '+20%攻速',
       icon: '/image/base/Bow.png'
     },
     {
@@ -27,13 +29,13 @@ export const items = {
     {
       id: 5,
       name: '锁子甲',
-      description: '+25护甲',
+      description: '+20护甲',
       icon: '/image/base/Vest.png'
     },
     {
       id: 6,
       name: '负极斗篷',
-      description: '+25魔抗',
+      description: '+20魔抗',
       icon: '/image/base/Cape.png'
     },
     {
@@ -60,7 +62,7 @@ export const items = {
       id: 100,
       name: '伏击之爪',
       description:
-        '在战斗环节开始时，获得一层法术护盾当法术护盾被打破时，对打破该护盾的英雄造成4s晕眩效果',
+        '在战斗环节开始时，获得一层法术护盾当法术护盾被打破时，对打破该护盾的英雄造成晕眩效果',
       icon: '/image/equipment/ambush.png',
       relation: [7, 8]
     },
@@ -68,21 +70,21 @@ export const items = {
       id: 101,
       name: '复用型十字弩',
       description:
-        '在携带者死亡时，这个装备会跳到一名友方英雄身上并提供额外的30%攻击速度和暴击几率',
+        '在携带者死亡时，这个装备会跳到一名友方英雄身上并提供额外的20%攻击速度和暴击几率',
       icon: '/image/equipment/Cross.png',
       relation: [3, 8]
     },
     {
       id: 102,
       name: '死亡之刃',
-      description: '开始获得一层，在击杀或助攻后，获得一层额外的15攻击力，持续到战斗结束(可无限叠加)',
+      description: '在击杀或助攻后，获得一层额外的15攻击力，持续到战斗结束(可无限叠加)',
       icon: '/image/equipment/death.png',
       relation: [1, 1]
     },
     {
       id: 103,
       name: '巨人杀手',
-      description: '攻击会造成相当于目标8%当前生命值的物理伤害',
+      description: '攻击会造成相当于目标5%最大生命值的额外真实伤害',
       icon: '/image/equipment/giantkiller.png',
       relation: [1, 3]
     },
@@ -103,14 +105,14 @@ export const items = {
     {
       id: 106,
       name: '正义之手',
-      description: '在战斗环节开始时，要么造成伤害+50%，要么攻击在命中时回复50生命值',
+      description: '在战斗环节开始时，要么造成伤害+40%，要么攻击在命中时回复40生命值',
       icon: '/image/equipment/justice.png',
       relation: [4, 8]
     },
     {
       id: 107,
       name: '水银',
-      description: '在携带者被控制时，净化该控制效果冷却时间为3秒',
+      description: '在携带者被控制时，净化该控制效果冷却时间为5秒',
       icon: '/image/equipment/mercury.png',
       relation: [6, 8]
     },
@@ -123,9 +125,9 @@ export const items = {
     },
     {
       id: 109,
-      name: '狂战士之斧',
-      description: '狂战士之斧(提供【狂战士】职业)',
-      icon: '/image/equipment/3071.png',
+      name: '连指手套',
+      description: '这个英雄也被视作一个约德尔人',
+      icon: '/image/equipment/yueder.png',
       relation: [8, 9]
     },
     {
@@ -137,36 +139,36 @@ export const items = {
     },
     {
       id: 111,
-      name: '法师之帽',
-      description: '提供【魔法师】职业',
-      icon: '/image/equipment/3090.png',
+      name: '暗裔',
+      description: '携带者也是恶魔单位',
+      icon: '/image/equipment/darkin.png',
       relation: [4, 9]
     },
     {
       id: 112,
-      name: '卢安娜的飓风',
-      description: '攻击一名额外敌人，造成60%伤害，带攻击特效,在同一英雄身上时，后续的【卢安娜的飓风】现在提供1个额外弹体',
-      icon: '/image/equipment/runaans_hurricane.png',
+      name: '诅咒之刃',
+      description: '普攻有20%几率使敌人缩小1星',
+      icon: '/image/equipment/cursed_blade.png',
       relation: [3, 6]
     },
     {
       id: 113,
-      name: '光之护符',
-      description: '提供【光】元素特质',
-      icon: '/image/equipment/3069.png',
+      name: '卢安娜的飓风',
+      description: '攻击一名额外敌人，造成75%伤害，带攻击特效',
+      icon: '/image/equipment/runaans_hurricane.png',
       relation: [6, 9]
     },
     {
       id: 114,
-      name: '巨龙之爪',
-      description: '装备者获得50%魔抗',
+      name: '龙爪',
+      description: '装备者获得75%魔抗',
       icon: '/image/equipment/dragons_claw.png',
       relation: [6, 6]
     },
     {
       id: 115,
       name: '冰霜之心',
-      description: '相邻敌人-35%攻速持续1秒',
+      description: '相邻敌人-35%攻速持续4秒',
       icon: '/image/equipment/frozen_heart.png',
       relation: [4, 5]
     },
@@ -180,7 +182,7 @@ export const items = {
     {
       id: 117,
       name: '灭世者的死亡之帽',
-      description: '+75%技能伤害',
+      description: '+50%技能伤害',
       icon: '/image/equipment/rabadons_deathcap.png',
       relation: [2, 2]
     },
@@ -194,7 +196,7 @@ export const items = {
     {
       id: 119,
       name: '基克的先驱',
-      description: '左右两格的英雄提供20%攻速',
+      description: '左右两格的英雄提供15%攻速',
       icon: '/image/equipment/zekes_herald.png',
       relation: [1, 7]
     },
@@ -208,7 +210,7 @@ export const items = {
     {
       id: 121,
       name: '离子火花',
-      description: '敌人施法时掉100点血',
+      description: '敌人施法时掉125点血',
       icon: '/image/equipment/ionic_spark.png',
       relation: [2, 6]
     },
@@ -222,21 +224,21 @@ export const items = {
     {
       id: 123,
       name: '守护天使',
-      description: '阵亡2秒后复活并恢复400生命值',
+      description: '阵亡2秒后复活并恢复800生命值',
       icon: '/image/equipment/guardian_angel.png',
       relation: [1, 5]
     },
     {
       id: 124,
       name: '红色增益',
-      description: '普攻造成10%的灼伤，+2%真实伤害',
+      description: '攻击在10秒内灼烧目标最大生命值20%并禁止治疗，效果无法叠加',
       icon: '/image/equipment/red_buff.png',
       relation: [5, 7]
     },
     {
       id: 125,
       name: '朔极之矛',
-      description: '使用技能后每次攻击回复18%最大法力值',
+      description: '使用技能后每次攻击回复15%最大法力值',
       icon: '/image/equipment/spear_of_shojin.png',
       relation: [1, 4]
     },
@@ -257,7 +259,7 @@ export const items = {
     {
       id: 128,
       name: '灵风',
-      description: '开局放逐一个敌军持续6秒【唯一】',
+      description: '开局放逐一个敌军持续6秒',
       icon: '/image/equipment/zephyr.png',
       relation: [6, 7]
     },
@@ -306,15 +308,15 @@ export const items = {
     {
       id: 135,
       name: '卢登的回声',
-      description: '每次技能施放时都会触发1次,造成150溅射伤害',
+      description: '技能造成200溅射伤害',
       icon: '/image/equipment/ludens_echo.png',
       relation: [2, 4]
     },
     {
       id: 136,
-      name: '地狱火熔渣',
-      description: '提供【地狱火】',
-      icon: '/image/equipment/3751.png',
+      name: '悠米',
+      description: '佩戴者也视为法师',
+      icon: '/image/equipment/yuumi.png',
       relation: [2, 9]
     },
     {
@@ -327,7 +329,7 @@ export const items = {
     {
       id: 138,
       name: '无尽之刃',
-      description: '+20%暴击几率+125%暴击伤害',
+      description: '+120%暴击伤害',
       icon: '/image/equipment/infinity_edge.png',
       relation: [1, 8]
     },
@@ -340,9 +342,9 @@ export const items = {
     },
     {
       id: 140,
-      name: '守护神板甲',
-      description: '提供【守护神】职业',
-      icon: '/image/equipment/3082.png',
+      name: '骑士之誓',
+      description: '佩戴者也视为骑士',
+      icon: '/image/equipment/knights_vow.png',
       relation: [5, 9]
     },
     {
@@ -355,14 +357,14 @@ export const items = {
     {
       id: 142,
       name: '救赎',
-      description: '生命值30%时治疗附近所有友军1200点生命值',
+      description: '生命值25%时治疗附近所有友军1200点生命值',
       icon: '/image/equipment/redemption.png',
       relation: [4, 7]
     },
     {
       id: 143,
       name: '钢铁烈阳之匣',
-      description: '战斗前为自己和左右两格内英雄施加8秒的300点护盾',
+      description: '战斗前为自己和左右两格内英雄施加7秒的300点护盾',
       icon: '/image/equipment/locket_of_the_iron_solari.png',
       relation: [2, 5]
     },

@@ -55,6 +55,9 @@ export default {
 };
 </script>
 <style lang="less">
+html,body{
+  background: transparent;
+}
 #app {
   width: 100%;
   max-width: 600px;
