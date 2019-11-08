@@ -1,33 +1,16 @@
 <template>
   <div class="home">
     <div class="base-list">
-      <div class="base-list--card" v-for="(item, index) in base" :key="index">
+      <div class="base-list--card" :class="item.type" v-for="(item, index) in base" :key="index">
         <img @mouseenter.stop="handleMouseOver($event, item, index)" @mouseout.stop="handleMouseOut" :src="item.icon" :alt="item.name">
       </div>
     </div>
-
-    <!-- <transition name="fade">
-      <div class="equipment-list" v-show="showEquipment">
-        <div class="equipment-list--list" v-for="(item, index) in currentEqupment" :key="index">
-          <div class="equipment-list--card left">
-            <img :src="item.base.icon" :alt="item.base.name">
-          </div>
-          <div class="equipment-list__line"></div>
-          <div class="equipment-list--card">
-            <img :src="item.icon" :alt="item.name">
-          </div>
-          <div class="equipment-list--desc">
-            <p class="name">{{item.name}}</p>
-            <p class="description">{{item.description}}</p>
-          </div>
-        </div>
-      </div>
-    </transition> -->
   </div>
 </template>
 
 <script>
 import { items } from '../data/equipment';
+import menu from '../data/menu';
 
 export default {
   name: 'Home',
@@ -44,19 +27,19 @@ export default {
     // eslint-disable-next-line global-require
     this.currentWindow = require('electron').remote.getCurrentWindow();
     const { equipment, base } = items;
-    this.base = base;
+    this.base = [...base, ...menu];
     this.equipment = equipment;
   },
   methods: {
     // 显示列表
     handleMouseOver (e, item) {
       if (!this.showEquipment) this.showEquipment = true;
-      const { id } = item;
+      const { id, type, combination } = item;
       // eslint-disable-next-line global-require
-      require('electron').ipcRenderer.send('over', id);
+      require('electron').ipcRenderer.send('over', item);
       // this.currentEqupment = this.getEquipmentRelation(id, this.equipment, this.base);
     },
-    handleMouseOut (e) {
+    handleMouseOut () {
       this.showEquipment = false;
       // eslint-disable-next-line global-require
       require('electron').ipcRenderer.send('out');
@@ -111,6 +94,12 @@ export default {
     .card(@cardWidth);
     &:hover {
       border-color: @active-border-color;
+    }
+    &.menu {
+      border-color: #000;
+      &:hover {
+        border-color: #7f7f7f;
+      }
     }
   }
 }
