@@ -42,7 +42,7 @@ const heroList = [
     cost: 1,
     img: '/image/hero/5_岩雀 塔利亚.png',
     profession: ['5'],
-    element: ['8']
+    element: ['11']
   },
   {
     id: 6,
