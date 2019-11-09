@@ -11,7 +11,7 @@ const createChilldWindow = parentWin => {
     transparent: true,
     // resizable: false,
     width: 600,
-    height: 600,
+    height: 800,
     maximizable: false,
     alwaysOnTop: true,
     skipTaskbar: true,

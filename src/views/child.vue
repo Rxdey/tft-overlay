@@ -17,19 +17,10 @@
         </div>
       </template>
       <template v-if="action === 'combination'">
-        <div class="equipment-list--combination">
-          <div class="equipment-list--combination__card" v-for="(item, index) in currentProfessionList" :key="index">
-            <div class="title">
-              <div class="icon"><img :src="item.icon" :alt="item.name"></div>
-              <div class="name">{{item.name}}</div>
-            </div>
-            <div class="body">
-              <div class="desc" v-if="item.effect">
-                {{item.effect.count + item.effect.text}}
-              </div>
-            </div>
-          </div>
-        </div>
+        <hero-card :currentProfessionList="currentProfessionList" :currentHeroList="currentHeroList" type="profession"/>
+      </template>
+      <template v-if="action === 'element'">
+        <hero-card :currentProfessionList="currentElementList" :currentHeroList="currentHeroList" type="element"/>
       </template>
     </div>
   </transition>
@@ -40,6 +31,7 @@ import elementList from '../data/elementList';
 import heroList from '../data/heroList';
 import professionList from '../data/professionList';
 import { getEquipmentRelation } from '@/common/util';
+import HeroCard from '@/components/hero-card/index.vue';
 
 export default {
   name: 'child',
@@ -99,14 +91,10 @@ export default {
       this.currentWindow.setPosition(x, y);
     }
   },
-  filters: {
-    setDesc(value) {
-      const length = value.match(/\$d/g).length;
-    }
-  },
   computed: {},
   watch: {},
   components: {
+    HeroCard
   }
 };
 </script>
@@ -120,7 +108,7 @@ export default {
   left: 0;
   // height: 100%;
   padding: 10px;
-  width: 90%;
+  width: 100%;
   background: #000;
   transition: 0.3s all;
   user-select: none;
@@ -151,32 +139,6 @@ export default {
     .description {
       font-size: 12px;
       font-style: italic;
-    }
-  }
-
-  &--combination {
-    display: flex;
-    flex-flow: row wrap;
-    font-size: 11px;
-    &__card {
-      // flex: 1;
-      width: 50%;
-      display: flex;
-      flex-flow: row;
-      margin-bottom: 10px;
-      .title {
-        width: 60px;
-        text-align: center;
-      }
-      .body{
-        margin-left: 5px;
-        flex: 1;
-      }
-      .icon {
-        .card(25px);
-        border-width: 1px;
-        margin: 0 auto;
-      }
     }
   }
 }
