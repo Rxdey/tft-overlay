@@ -22,7 +22,7 @@ function createWindow() {
     height: 80,
     frame: false,
     transparent: true,
-    resizable: false, // 改变大小
+    resizable: true, // 改变大小
     maximizable: false,
     alwaysOnTop: true, // 置顶
     skipTaskbar: true,

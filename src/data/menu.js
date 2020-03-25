@@ -8,7 +8,7 @@ const menu = [
   },
   {
     id: 100,
-    name: '元素',
+    name: '职业',
     icon: '/image/menu/element.jpg',
     type: 'menu',
     action: 'element'

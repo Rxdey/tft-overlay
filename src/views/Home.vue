@@ -34,7 +34,7 @@ export default {
     // 显示列表
     handleMouseOver (e, item) {
       if (!this.showEquipment) this.showEquipment = true;
-      const { id, type, combination } = item;
+      // const { id, type, combination } = item;
       // eslint-disable-next-line global-require
       require('electron').ipcRenderer.send('over', item);
       // this.currentEqupment = this.getEquipmentRelation(id, this.equipment, this.base);

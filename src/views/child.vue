@@ -17,10 +17,10 @@
         </div>
       </template>
       <template v-if="action === 'combination'">
-        <hero-card :currentProfessionList="currentProfessionList" :currentHeroList="currentHeroList" type="profession"/>
+        <hero-card :currentProfessionList="currentProfessionList" :currentHeroList="currentHeroList" type="1"/>
       </template>
       <template v-if="action === 'element'">
-        <hero-card :currentProfessionList="currentElementList" :currentHeroList="currentHeroList" type="element"/>
+        <hero-card :currentProfessionList="currentElementList" :currentHeroList="currentHeroList" type="2"/>
       </template>
     </div>
   </transition>

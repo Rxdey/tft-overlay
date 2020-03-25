@@ -10,8 +10,8 @@ const createChilldWindow = parentWin => {
     frame: false,
     transparent: true,
     // resizable: false,
-    width: 600,
-    height: 800,
+    width: 800,
+    height: 900,
     maximizable: false,
     alwaysOnTop: true,
     skipTaskbar: true,
@@ -23,7 +23,7 @@ const createChilldWindow = parentWin => {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     childWin.loadURL('http://localhost:8080/#/child');
-    // if (!process.env.IS_TEST) win.webContents.openDevTools();
+    // if (!process.env.IS_TEST) childWin.webContents.openDevTools();
   } else {
     createProtocol('app');
     childWin.loadURL('app://./index.html#/child');
