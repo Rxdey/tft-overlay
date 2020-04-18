@@ -7,7 +7,8 @@ const professionList = [
     alias: '3001.png',
     level: {
       3: '30%几率触发。',
-      6: '55几率触发。'
+      6: '55%几率触发。',
+      9: '100%几率触发。'
     },
     TFTID: '24',
     imagePath: 'https://game.gtimg.cn/images/lol/act/img/tft/classes/3001.png'
@@ -32,7 +33,8 @@ const professionList = [
     alias: '3003.png',
     level: {
       2: '50%额外攻击速度',
-      4: '80%额外攻击速度，参与击杀后刷新'
+      4: '80%额外攻击速度，参与击杀后刷新',
+      6: '125%额外攻击速度，参与击杀后刷新'
     },
     TFTID: '26',
     imagePath: 'https://game.gtimg.cn/images/lol/act/img/tft/classes/3003.png'
@@ -58,8 +60,9 @@ const professionList = [
     alias: '3005.png',
     level: {
       2: '20%法术强度',
-      4: '40%法术强度',
-      6: '80%法术强度'
+      4: '45%法术强度',
+      6: '80%法术强度',
+      8: '125%法术强度'
     },
     TFTID: '28',
     imagePath: 'https://game.gtimg.cn/images/lol/act/img/tft/classes/3005.png'
@@ -72,7 +75,8 @@ const professionList = [
     alias: '3006.png',
     level: {
       2: '20%最大生命值',
-      4: '35%最大生命值'
+      4: '35%最大生命值',
+      6: '45%最大生命值'
     },
     TFTID: '29',
     imagePath: 'https://game.gtimg.cn/images/lol/act/img/tft/classes/3006.png'

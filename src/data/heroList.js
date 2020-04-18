@@ -1783,6 +1783,18 @@ const heroList = [
     jobs: '圣盾使',
     attackData: '50/90/162',
     lifeData: '800/1440/2592'
+  },
+  {
+    chessId: '519',
+    title: '泽拉斯',
+    name: '178.png',
+    displayName: '泽拉斯',
+    raceIds: '9',
+    jobIds: '5',
+    price: '5',
+    skillIntroduce: '深渊轰炸：泽拉斯变换形态，持续6/8/45秒，将他的普通攻击替换为召唤流星，来打击随机敌人。',
+    skillDetail: '深渊轰炸：泽拉斯变换形态，持续6/8/45秒，将他的普通攻击替换为召唤流星，来打击随机敌人。流星在撞击时造成350/450/2500魔法伤害，并且如果击杀了目标，还会对所有邻格的敌人造成175/225/1250魔法伤害和1.5秒晕眩效果。',
+    originalImage: 'https://game.gtimg.cn/images/lol/act/img/tft/original-image/neeko-pop-blossom.png'
   }
 ];
 

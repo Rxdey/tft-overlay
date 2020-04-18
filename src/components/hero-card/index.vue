@@ -118,6 +118,7 @@ export default {
       }
       .name {
         color: aqua;
+        font-size: 14px;
         margin-bottom: 3px;
       }
     }

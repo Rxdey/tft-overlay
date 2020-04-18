@@ -20,7 +20,11 @@ export default {
       equipment: [],
       showEquipment: false,
       currentEqupment: [],
-      currentWindow: null
+      currentWindow: null,
+      prograssStyle: {
+        width: 0
+      },
+      stepText: '发现新版本'
     };
   },
   mounted () {
@@ -31,6 +35,31 @@ export default {
     this.equipment = equipment;
   },
   methods: {
+    // checkUpdate () {
+    //   const self = this;
+    //   // eslint-disable-next-line global-require
+    //   require('electron').ipcRenderer.send('checkUpdate');
+    //   // eslint-disable-next-line global-require
+    //   require('electron').ipcRenderer.on('downloadProgress', (event, data) => {
+    //     self.prograssStyle.width = `${data.percent.toFixed(2)}%`;// 更新进度条样式
+    //     self.stepText = `正在更新中(${self.prograssStyle.width})...`;
+    //   });
+    //   // eslint-disable-next-line global-require
+    //   require('electron').ipcRenderer.on('message', (event, data) => {
+    //     self.stepText = data.msg;
+    //     // eslint-disable-next-line default-case
+    //     switch (data.status) {
+    //       case -1:
+    //         alert(data.msg);
+    //         // 退出程序
+    //         this.$electron.ipcRenderer.send('logout');
+    //         break;
+    //       case 2:
+    //         self.downloadDb();// 下载sqlite数据库文件
+    //         break;
+    //     }
+    //   });
+    // },
     // 显示列表
     handleMouseOver (e, item) {
       if (!this.showEquipment) this.showEquipment = true;

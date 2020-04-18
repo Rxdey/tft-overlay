@@ -1,5 +1,5 @@
 import { app, protocol, BrowserWindow, ipcMain } from 'electron';
-import { createProtocol, installVueDevtools } from 'vue-cli-plugin-electron-builder/lib';
+import { createProtocol /* installVueDevtools */ } from 'vue-cli-plugin-electron-builder/lib';
 // eslint-disable-next-line import/no-named-as-default
 import trayMenu from './menu';
 import createChilldWindow from './childWindow';
@@ -15,7 +15,7 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ]);
 
-function createWindow() {
+function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     width: 600,

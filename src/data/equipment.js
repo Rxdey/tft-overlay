@@ -82,7 +82,7 @@ export const items = {
     {
       id: 103,
       name: '巨人杀手',
-      description: '攻击会造成相当于目标9%当前生命值的物理伤害',
+      description: '攻击会额外造成相当于目标9%当前生命值的物理伤害。',
       icon: '/image/equipment/giantkiller.png',
       relation: [1, 3]
     },
@@ -103,14 +103,14 @@ export const items = {
     {
       id: 106,
       name: '正义之手',
-      description: '在战斗环节开始时，要么造成伤害+50%，要么攻击在命中时回复50生命值',
+      description: '在战斗环节开始时，携带者获得下面两项增益之一：1.普通攻击和技能造成的伤害+50%；2.普通攻击在命中时治疗自身50生命值。',
       icon: '/image/equipment/justice.png',
       relation: [4, 8]
     },
     {
       id: 107,
       name: '水银',
-      description: '在携带者被控制时，净化该控制效果冷却时间为3秒',
+      description: '携带者免疫控制效果（携带唯一）',
       icon: '/image/equipment/mercury.png',
       relation: [6, 8]
     },
@@ -145,7 +145,7 @@ export const items = {
     {
       id: 112,
       name: '卢安娜的飓风',
-      description: '攻击一名额外敌人，造成60%伤害，带攻击特效,在同一英雄身上时，后续的【卢安娜的飓风】现在提供1个额外弹体',
+      description: '卢安娜的飓风普通攻击会对附近的另一名敌人发射一个额外的弹体，造成携带者60%攻击力的伤害并附带攻击特效。',
       icon: '/image/equipment/runaans_hurricane.png',
       relation: [3, 6]
     },
@@ -166,7 +166,7 @@ export const items = {
     {
       id: 115,
       name: '冰霜之心',
-      description: '相邻敌人-35%攻速持续1秒',
+      description: '降低邻近格子的敌人40%攻击速度，持续1秒。(多个【冰霜之心】可提升效果的半径)',
       icon: '/image/equipment/frozen_heart.png',
       relation: [4, 5]
     },
@@ -180,7 +180,7 @@ export const items = {
     {
       id: 117,
       name: '灭世者的死亡之帽',
-      description: '+75%技能伤害',
+      description: '增加75%技能伤害',
       icon: '/image/equipment/rabadons_deathcap.png',
       relation: [2, 2]
     },
@@ -257,7 +257,7 @@ export const items = {
     {
       id: 128,
       name: '灵风',
-      description: '开局放逐一个敌军持续6秒【唯一】',
+      description: '战斗开始时，携带者会在棋盘的对面召唤旋风，将旋风处或旋风最邻近的敌人放逐6秒。【唯一】',
       icon: '/image/equipment/zephyr.png',
       relation: [6, 7]
     },
@@ -299,7 +299,7 @@ export const items = {
     {
       id: 134,
       name: '斯塔缇克电刃',
-      description: '每三次普攻造成3个目标100溅射魔法伤害',
+      description: '每3次攻击，对3/4/5个敌人(随携带者的等级成长)造成85魔法伤害。',
       icon: '/image/equipment/statikk_shiv.png',
       relation: [3, 4]
     },
@@ -369,7 +369,7 @@ export const items = {
     {
       id: 144,
       name: '狂徒铠甲',
-      description: '每秒回复已失去生命值的6%',
+      description: '每秒恢复已损失生命值的6%。',
       icon: '/image/equipment/warmogs_armor.png',
       relation: [7, 7]
     }

@@ -109,7 +109,7 @@ export default {
   // height: 100%;
   padding: 10px;
   width: 100%;
-  background: #000;
+  background: rgba(0,0,0,.5);
   transition: 0.3s all;
   user-select: none;
   color: @desc-color;

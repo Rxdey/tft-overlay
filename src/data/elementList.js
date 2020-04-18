@@ -32,8 +32,8 @@ const elementList = [
     alias: '3103.png',
     level: {
       2: '15%治疗效果',
-      4: '30%治疗效果',
-      6: '60%治疗效果'
+      4: '40%治疗效果',
+      6: '65%治疗效果'
     },
     TFTID: '31',
     imagePath: 'https://game.gtimg.cn/images/lol/act/img/tft/origins/3103.png'
@@ -46,7 +46,8 @@ const elementList = [
     alias: '3104.png',
     level: {
       3: '150护盾值和10%伤害提升',
-      6: '225护盾值和15%伤害提升'
+      6: '225护盾值和15%伤害提升',
+      9: '350护盾值和15%伤害提升'
     },
     TFTID: '32',
     imagePath: 'https://game.gtimg.cn/images/lol/act/img/tft/origins/3104.png'
@@ -110,8 +111,9 @@ const elementList = [
     introduce: '当一名【暗星】英雄阵亡时，该英雄会提供伤害提升效果，外加该英雄身上已有的此效果层数，给距离最近的友方【暗星】英雄。',
     alias: '3109.png',
     level: {
-      3: '35%伤害提升',
-      6: '80%伤害提升'
+      3: '+25攻击力和法术强度',
+      6: '+35攻击力和法术强度',
+      9: '45攻击力和法术强度'
     },
     TFTID: '37',
     imagePath: 'https://game.gtimg.cn/images/lol/act/img/tft/origins/3109.png'
