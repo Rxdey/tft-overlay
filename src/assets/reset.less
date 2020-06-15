@@ -1,0 +1,147 @@
+// @import '//at.alicdn.com/t/font_1170225_7azcdj0jirj.css';
+* {
+    box-sizing: border-box;
+  }
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  div,
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  p,
+  blockquote,
+  pre,
+  hr,
+  figure,
+  table,
+  caption,
+  th,
+  td,
+  form,
+  fieldset,
+  legend,
+  input,
+  button,
+  textarea,
+  menu {
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body,
+  fieldset,
+  img,
+  iframe,
+  abbr {
+    border: 0;
+  }
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  li {
+    list-style: none;
+  }
+  textarea {
+    overflow: auto;
+    resize: none;
+  }
+  a,
+  button {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  em,
+  strong,
+  b {
+    font-weight: bold;
+  }
+  a,
+  a:hover,
+  a:active,
+  a:visited,
+  a:focus {
+    text-decoration: none;
+  }
+  .clearfix {
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    /*滚动条宽度*/
+    height: 10px;
+    /*滚动条高度*/
+  }
+  
+  /*定义滚动条轨道 内阴影+圆角*/
+  
+  ::-webkit-scrollbar-track {
+    // -webkit-box-shadow: inset 0 0 6px #eee;
+    border-radius: 4px;
+    /*滚动条的背景区域的圆角*/
+    background-color: #f1f1f1;
+    /*滚动条的背景颜色*/
+  }
+  
+  /*定义滑块 内阴影+圆角*/
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    /*滚动条的圆角*/
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #bebebe;
+    /*滚动条的背景颜色*/
+  }
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+  .drag {
+    -webkit-app-region: drag;
+  }
+  
+  .ov {
+    overflow: hidden; //超出的文本隐藏
+    text-overflow: ellipsis; //溢出用省略号显示
+    white-space: nowrap; //溢出不换行
+  }
+  .ov_1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; //作为弹性伸缩盒子模型显示。
+    -webkit-box-orient: vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+    -webkit-line-clamp: 3; //显示的行
+  }
+  .ov_2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; //作为弹性伸缩盒子模型显示。
+    -webkit-box-orient: vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+    -webkit-line-clamp: 2; //显示的行
+  }
+  .ov_3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; //作为弹性伸缩盒子模型显示。
+    -webkit-box-orient: vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+    -webkit-line-clamp: 3; //显示的行
+  }
+  
