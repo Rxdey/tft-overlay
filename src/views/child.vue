@@ -13,6 +13,7 @@
 
 <script>
 import { remote, ipcRenderer } from 'electron';
+// eslint-disable-next-line import/extensions
 import { getEquipmentRelation } from '@/common/utils';
 import EquipCard from '@/components/equip-card.vue';
 import HeroCard from '@/components/hero-card.vue';

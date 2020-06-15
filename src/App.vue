@@ -37,9 +37,11 @@ body {
 .header {
   width: 80px;
   .line {
-    background: #f4f4f4;
+    background: url('/header.png')no-repeat center;
+    background-size: cover;
     width: 80px;
-    height: 15px;
+    height: 34px;
+    margin-bottom: 5px;
   }
 }
 .router-view {

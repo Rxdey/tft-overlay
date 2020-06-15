@@ -18,7 +18,7 @@ export const trayMenu = (mainWindow) => {
     }
   ];
   const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
-  appTray.setToolTip('tft-overlay');
+  appTray.setToolTip('TFT-Overlay');
   appTray.setContextMenu(contextMenu);
   appTray.on('click', () => {
     mainWindow.show();
