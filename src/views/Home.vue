@@ -1,112 +1,69 @@
 <template>
   <div class="home">
     <div class="base-list">
-      <div class="base-list--card" :class="item.type" v-for="(item, index) in base" :key="index">
-        <img @mouseenter.stop="handleMouseOver($event, item, index)" @mouseout.stop="handleMouseOut" :src="item.icon" :alt="item.name">
+      <div class="base-list--card" :class="item.type" v-for="(item, index) in baseEquipList" :key="index">
+        <img @mouseenter.stop="handleMouseOver($event, item, index)" @mouseout.stop="handleMouseOut" :src="item.imagePath" :alt="item.name">
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { items } from '../data/equipment';
-import menu from '../data/menu';
+import { ipcRenderer } from 'electron';
+
+const menu = [
+  {
+    equipId: 999,
+    name: '羁绊',
+    imagePath: '/image/menu/assassin.jpg',
+    type: 'menu',
+    action: '2'
+  },
+  {
+    id: 1000,
+    name: '职业',
+    imagePath: '/image/menu/element.jpg',
+    type: 'menu',
+    action: '1'
+  }
+];
 
 export default {
   name: 'Home',
-  data () {
+  data() {
     return {
-      base: [],
-      equipment: [],
-      showEquipment: false,
-      currentEqupment: [],
-      currentWindow: null,
-      prograssStyle: {
-        width: 0
-      },
-      stepText: '发现新版本'
+      baseEquipList: [],
+      showEquipment: false
     };
   },
-  mounted () {
-    // eslint-disable-next-line global-require
-    this.currentWindow = require('electron').remote.getCurrentWindow();
-    const { equipment, base } = items;
-    this.base = [...base, ...menu];
-    this.equipment = equipment;
+  async mounted() {
+    const res = await this.$store.dispatch('UPDATE_EQUIPLIST');
+    if (!res) return;
+    // equipId开头第一个数字代表赛季妈蛋
+    this.baseEquipList = res.filter(item => item.type === '1' && item.equipId[0] === this.season).concat(menu);
   },
   methods: {
-    // checkUpdate () {
-    //   const self = this;
-    //   // eslint-disable-next-line global-require
-    //   require('electron').ipcRenderer.send('checkUpdate');
-    //   // eslint-disable-next-line global-require
-    //   require('electron').ipcRenderer.on('downloadProgress', (event, data) => {
-    //     self.prograssStyle.width = `${data.percent.toFixed(2)}%`;// 更新进度条样式
-    //     self.stepText = `正在更新中(${self.prograssStyle.width})...`;
-    //   });
-    //   // eslint-disable-next-line global-require
-    //   require('electron').ipcRenderer.on('message', (event, data) => {
-    //     self.stepText = data.msg;
-    //     // eslint-disable-next-line default-case
-    //     switch (data.status) {
-    //       case -1:
-    //         alert(data.msg);
-    //         // 退出程序
-    //         this.$electron.ipcRenderer.send('logout');
-    //         break;
-    //       case 2:
-    //         self.downloadDb();// 下载sqlite数据库文件
-    //         break;
-    //     }
-    //   });
-    // },
-    // 显示列表
-    handleMouseOver (e, item) {
+    handleMouseOver(e, item) {
       if (!this.showEquipment) this.showEquipment = true;
-      // const { id, type, combination } = item;
-      // eslint-disable-next-line global-require
-      require('electron').ipcRenderer.send('over', item);
-      // this.currentEqupment = this.getEquipmentRelation(id, this.equipment, this.base);
+      ipcRenderer.send('mouse-over', item);
     },
-    handleMouseOut () {
+    handleMouseOut() {
       this.showEquipment = false;
-      // eslint-disable-next-line global-require
-      require('electron').ipcRenderer.send('out');
-      // this.handleLock();
-    },
-    /**
-     * 通过id查找
-     * @param {Number} id -基础物品id
-     * @param {Array} array -基础物品列表
-     */
-    getEquipmentById (id, array) {
-      return array.filter(item => item.id === id)[0];
-    },
-    /**
-     * 通过id查找合成项
-     * @param {Number} id -基础物品id
-     * @param {Array} array -合成物品列表
-     */
-    getEquipmentRelation (relateId, array, baseArray) {
-      return array
-        .filter(item => item.relation.includes(relateId))
-        .map(item => {
-          const baseId = item.relation.filter(m => m !== relateId)[0] || relateId;
-          return {
-            ...item,
-            base: this.getEquipmentById(baseId, baseArray)
-          };
-        })
-        .sort((a, b) => a.base.id - b.base.id);
+      ipcRenderer.send('mouse-out');
+    }
+  },
+  computed: {
+    season() {
+      return this.$store.state.season;
     }
   }
 };
 </script>
 
 <style lang="less">
-@import url("../assets/css/public.less");
-@import url("../assets/css/color.less");
-@import url("../assets/css/animate.less");
+@import url("../assets/public.less");
+@import url("../assets/color.less");
+// @import url("../assets/animate.less");
 
 .home {
   position: relative;
@@ -120,6 +77,7 @@ export default {
   &--card {
     display: inline-block;
     margin-right: 2px;
+    cursor: pointer;
     .card(@cardWidth);
     &:hover {
       border-color: @active-border-color;

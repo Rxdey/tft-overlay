@@ -10,52 +10,20 @@
 </template>
 
 <script>
-let mouseX = 0;
-let mouseY = 0;
-let dragging = false;
-
 export default {
-  data () {
+  data() {
     return {
-      currentWindow: null
     };
   },
-  mounted () {
+  mounted() {
   },
   methods: {
-    handleMouseOut (e) {
-      e.preventDefault();
-    },
-    handleMouseUp (e) {
-      e.preventDefault();
-      dragging = false;
-    },
-    handleMouseMove (e) {
-      e.preventDefault();
-      if (dragging) {
-        const moveX = e.pageX - mouseX;
-        const moveY = e.pageY - mouseY;
-        const pos = this.currentWindow.getPosition();
-        this.currentWindow.setPosition(pos[0] + moveX, pos[1] + moveY, true);
-      }
-    },
-    handleMouseDown (e) {
-      e.preventDefault();
-      dragging = true;
-      mouseX = e.pageX;
-      mouseY = e.pageY;
-    },
-    handleUnlock () {
-      this.currentWindow.setIgnoreMouseEvents(false);
-    },
-    handleLock () {
-      this.currentWindow.setIgnoreMouseEvents(true, { forward: true });
-    }
   }
 };
 </script>
 <style lang="less">
-html,body{
+html,
+body {
   background: transparent;
 }
 #app {
@@ -67,12 +35,13 @@ html,body{
   flex-flow: column;
 }
 .header {
-  width: 50px;
-  padding: 5px;
+  width: 80px;
   .line {
-    background: #fdfbe3;
-    width: 40px;
-    height: 12px;
+    background: url('/header.png')no-repeat center;
+    background-size: cover;
+    width: 80px;
+    height: 34px;
+    margin-bottom: 5px;
   }
 }
 .router-view {

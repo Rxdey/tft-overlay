@@ -1,90 +1,67 @@
 import { app, protocol, BrowserWindow, ipcMain } from 'electron';
-import { createProtocol /* installVueDevtools */ } from 'vue-cli-plugin-electron-builder/lib';
-// eslint-disable-next-line import/no-named-as-default
-import trayMenu from './menu';
-import createChilldWindow from './childWindow';
+import { createProtocol, installVueDevtools } from 'vue-cli-plugin-electron-builder/lib';
+import model from './electron/requestData';
+import createChilldWindow from './electron/childWindow';
+import CreateTrayMenu from './electron/menu';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let win;
+let childWin;
 
-// Scheme must be registered before the app is ready
-protocol.registerSchemesAsPrivileged([
-  { scheme: 'app', privileges: { secure: true, standard: true } }
-]);
+protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }]);
 
-function createWindow () {
-  // Create the browser window.
+function createWindow() {
   win = new BrowserWindow({
     width: 600,
-    height: 80,
+    height: 95,
+    x: 0,
+    y: 0,
     frame: false,
     transparent: true,
-    resizable: true, // 改变大小
+    resizable: false, // 改变大小
     maximizable: false,
     alwaysOnTop: true, // 置顶
     skipTaskbar: true,
-    x: 0,
-    y: 0,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
     }
   });
-
   if (process.env.WEBPACK_DEV_SERVER_URL) {
-    // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     // if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
     createProtocol('app');
-    // Load the index.html when not in development
     win.loadURL('app://./index.html');
   }
 
   win.on('closed', () => {
     win = null;
   });
-  const childWin = createChilldWindow(win);
-  trayMenu(win);
-  ipcMain.on('over', (e, item) => {
-    childWin.webContents.send('over', item);
-  });
-  ipcMain.on('out', (e) => {
-    childWin.webContents.send('out');
-  });
-  // win.setAlwaysOnTop(true, 'status', 99999);
-  // 全屏监听不到啊，就一直置顶吧 没啥问题
-  setInterval(() => {
-    win.moveTop();
-  }, 2000);
-  // win.on('always-on-top-changed', () => {
-  //   console.log('blur');
-  //   win.moveTop();
-  // });
 }
 
-// Quit when all windows are closed.
-app.on('window-all-closed', () => {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
+/**
+ * 获取数据
+ * @param {String} name 数据名字
+ */
+ipcMain.on('async-getdata', async (event, arg) => {
+  if (!(arg in model)) {
+    event.returnValue = 0;
+    return;
+  }
+  try {
+    const res = await model[arg]();
+    event.returnValue = res;
+  } catch (error) {
+    event.returnValue = 0;
   }
 });
 
 app.on('activate', () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (win === null) {
     createWindow();
   }
 });
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
   if (isDevelopment && !process.env.IS_TEST) {
     // Install Vue Devtools
@@ -100,12 +77,14 @@ app.on('ready', async () => {
     // }
   }
   createWindow();
+  childWin = createChilldWindow(win);
+  CreateTrayMenu(win);
 });
 
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
   if (process.platform === 'win32') {
-    process.on('message', data => {
+    process.on('message', (data) => {
       if (data === 'graceful-exit') {
         app.quit();
       }
@@ -116,3 +95,30 @@ if (isDevelopment) {
     });
   }
 }
+// 鼠标经过
+ipcMain.on('mouse-over', (e, item) => {
+  if (!childWin) {
+    childWin = createChilldWindow();
+  }
+  childWin.showInactive();
+  childWin.webContents.send('mouse-over', item);
+});
+ipcMain.on('mouse-out', (e) => {
+  if (!childWin) {
+    childWin = createChilldWindow();
+  }
+  childWin.webContents.send('mouse-out');
+  childWin.hide();
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+// 全屏监听不到啊，就一直置顶吧 没啥问题
+setInterval(() => {
+  if (!win) return;
+  win.moveTop();
+}, 3000);
