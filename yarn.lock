@@ -978,15 +978,10 @@
   resolved "https://registry.npm.taobao.org/@types/minimatch/download/@types/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha1-PcoOPzOyAPx9ETnAzZbBJoyt/Z0=
 
-"@types/node@*":
-  version "14.0.13"
-  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.0.13.tgz#ee1128e881b874c371374c1f72201893616417c9"
-  integrity sha1-7hEo6IG4dMNxN0wfciAYk2FkF8k=
-
-"@types/node@^12.0.12":
-  version "12.12.47"
-  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-12.12.47.tgz#5007b8866a2f9150de82335ca7e24dd1d59bdfb5"
-  integrity sha1-UAe4hmovkVDegjNcp+JN0dWb37U=
+"@types/node@*", "@types/node@^14.6.2":
+  version "14.18.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.12.tgz#0d4557fd3b94497d793efd4e7d92df2f83b4ef24"
+  integrity sha512-q4jlIR71hUpWTnGhXWcakgkZeHa3CCjcQcnuzU8M891BAWA2jHiziiWEPEkdS5pFsz7H9HJiy8BrK7tBRNrY7A==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -3472,13 +3467,13 @@ electron-to-chromium@^1.3.413:
   resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.473.tgz?cache=0&sync_timestamp=1592062766432&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.473.tgz#d0cd5fe391046fb70674ec98149f0f97609d29b8"
   integrity sha1-0M1f45EEb7cGdOyYFJ8Pl2CdKbg=
 
-electron@^9.0.0:
-  version "9.0.4"
-  resolved "https://registry.npm.taobao.org/electron/download/electron-9.0.4.tgz#5aa72c1576c82c19f6e087311ffe1d7b74358d25"
-  integrity sha1-WqcsFXbILBn24IcxH/4de3Q1jSU=
+electron@^13.6.6:
+  version "13.6.6"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-13.6.6.tgz#ebd4754b2b55d54a2e8e9cdc3d0a2bb6b7053827"
+  integrity sha512-TP2Bl1nTxaH1yRmlYiF7imzvKE/NASE0cl6wOYA3AaP/UrBGc4L3NwJfn5Z55o+1t4TH8vCRxENufESyb32HhA==
   dependencies:
     "@electron/get" "^1.0.1"
-    "@types/node" "^12.0.12"
+    "@types/node" "^14.6.2"
     extract-zip "^1.0.3"
 
 elliptic@^6.0.0, elliptic@^6.5.2:

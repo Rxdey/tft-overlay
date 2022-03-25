@@ -15,7 +15,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
-    "electron": "^9.0.0",
+    "electron": "^13.6.6",
     "request": "^2.88.2",
     "vue": "^2.6.11",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.2",
